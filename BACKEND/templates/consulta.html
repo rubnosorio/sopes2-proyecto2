@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Consulta de estudiante</h3>
+        </div>
+        <div class="card-body">
+            <form action="/consulta" method="POST">
+                <div class="form-group">
+                    <input type="text" name="carne" class="form-control" placeholder="carne" value="{{ request.form['carne'] }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="año" class="form-control" placeholder="año" value="{{ request.form['año'] }}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="semestre" class="form-control" placeholder="semestre" value="{{ request.form['semestre'] }}">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Consultar
+                    </button>
+                </div>
+            </form>
+            <div id="resultado_consulta" style="align=center">
+                {% if num %}
+                    <p>Grupo:</p>
+                    <h1>{{num[0]['grupo']}}</h1>
+                {%else%}
+                    {% if presiono %}
+                        <p>Grupo:</p>
+                        <h1>-1</h1>
+                    {% else %}
+                        <p></p>
+                        <h1></h1>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS student;
+
+CREATE TABLE student (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    carne TEXT NOT NULL,
+    dpi TEXT NOT NULL,
+    correo TEXT NOT NULL,
+    semestre TEXT NOT NULL,
+    año TEXT NOT NULL,
+    grupo TEXT NOT NULL
+);

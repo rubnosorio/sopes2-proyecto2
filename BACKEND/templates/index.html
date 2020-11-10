@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Welcome to WebApp {% endblock %}
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h2 class="display-4">Welcome to WebApp</h2>
+    <p class="lead">Seleccione una opcion</p>
+  </div>
+</div>
+
+<div id="contenedor">
+  <div id="contenido_modos">
+    <div class="card" onclick="window.location='{{ url_for('consulta')}}';">
+      <img src="{{ url_for('static', filename= 'img/student.jpg' ) }}">
+      <h3>Consultar</h3>
+      <p>Podra consulta si el estudiante ya tiene un grupo asignado.</p>
+    </div>
+
+    <div class="card" onclick="window.location='{{ url_for('insertar')}}';">
+      <img src="{{ url_for('static', filename= 'img/insert.jpg' ) }}">
+      <h3>Agregar</h3>
+      <p>Podra agregar un nuevo estudiante.</p>
+    </div>
+
+    <div class="card" onclick="window.location='{{ url_for('grupo')}}';">
+      <img src="{{ url_for('static', filename= 'img/group.jpg' ) }}">
+      <h3>Grupo</h3>
+      <p>Podra consultar los estudiantes que estan en cierto grupo.</p>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

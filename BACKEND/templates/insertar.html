@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="col-md-4 mx-auto">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Insertar estudiante</h3>
+        </div>
+        <div class="card-body">
+            <form action="/insertar" method="POST">
+                <div class="form-group">
+                    <input type="text" name="nombre" class="form-control" placeholder="nombre" value="{{ request.form['nombre'] }}" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="carne" class="form-control" placeholder="carne" value="{{ request.form['carne'] }}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="dpi" class="form-control" placeholder="dpi" value="{{ request.form['dpi'] }}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="semestre" class="form-control" placeholder="semestre" value="{{ request.form['semestre'] }}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="año" class="form-control" placeholder="año" value="{{ request.form['año'] }}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="grupo" class="form-control" placeholder="grupo" value="{{ request.form['grupo'] }}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="correo" class="form-control" placeholder="correo" value="{{ request.form['correo'] }}">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Insertar
+                    </button>
+                </div>
+            </form>
+            <div id="resultado_insertar"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}
