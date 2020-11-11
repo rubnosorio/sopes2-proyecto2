@@ -81,25 +81,27 @@ def insertar():
 
     return render_template('insertar.html')
 
-'''
+
 @app.route('/grupo', methods=['GET', 'POST'])
 def grupo():
     if request.method == "POST":
         grupo = request.form['grupo']
-
+        data = {
+            'grupo': grupo,
+        }
         if not grupo:
             flash('No se llenaron todos los campos del formulario, para consultar grupo')
             return redirect(url_for('grupo'))
         else:
-            cadena = "SELECT carne, correo FROM student WHERE grupo='{0}'".format(grupo)
-            conn = get_db_connection()
-            datos = conn.execute(cadena).fetchall()
-            conn.commit()
-            conn.close()
-            return render_template('grupo.html', datos=datos)
+            endpoint_grupo =os.getenv("ENDPOINT_BACKEND") + "grupo"
+            r = requests.post(endpoint_insertar, data=data)
+            if r.status_code == 201:
+                return render_template('grupo.html', datos=r.text)
+            else:
+                flash('Hubo un error al consular al grupo')         
 
     return render_template('grupo.html')
-
+'''
 @app.route('/delete', methods=['GET', 'POST'])
 def delete():
     if request.method == "POST":

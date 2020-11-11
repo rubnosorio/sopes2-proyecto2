@@ -35,7 +35,7 @@ def consulta():
     else:
         consulta = {"carne": carne, "anio": anio, "semestre": semestre}
         x = coleccion.find(consulta)
-        return Response({'mensaje': x}, status=201, mimetype='application/json')
+        return Response(json.loads(x), status=201, mimetype='application/json')
 
 
 
