@@ -96,7 +96,7 @@ def grupo():
             endpoint_grupo =os.getenv("ENDPOINT_BACKEND") + "grupo"
             r = requests.post(endpoint_grupo, data=data)
             if r.status_code == 201:
-                return render_template('grupo.html', datos=json.dumps(r.text))
+                return render_template('grupo.html', datos=json.loads(r.text))
             else:
                 flash('Hubo un error al consular al grupo')         
 
