@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    environment: frontend
+  name: frontend-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      environment: frontend
+  minReadySeconds: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate 
+  template: 
+     metadata:
+       labels:
+         environment: frontend
+     spec:
+       containers:
+       - image: us.gcr.io/sopes1-281617/test-nginix
+         name: nginx 
+         ports:
+           - containerPort: 80
+

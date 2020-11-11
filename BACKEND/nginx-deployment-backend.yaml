@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    environment: backend
+  name: backend-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      environment: backend
+  minReadySeconds: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate 
+  template: 
+     metadata:
+       labels:
+         environment: backend
+     spec:
+       containers:
+       - image: us.gcr.io/sopes1-281617/test-nginix
+         name: nginx 
+         ports:
+           - containerPort: 80
+
