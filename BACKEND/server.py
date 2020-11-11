@@ -24,34 +24,22 @@ def index():
     datos = [{"nombre": "Hola"}, {"nombre": "Yoselin"}, {"nombre": "como"}, {"nombre": "estas?"}]
     return render_template('index.html', author="Yoselin", sunny=False, lista=datos)
 
-'''
-@app.route('/consulta', methods=['GET', 'POST'])
+
+@app.route('/consulta', methods=['GET'])
 def consulta():
     if request.method == 'POST':
         carne = request.form['carne']
         anio = request.form['año']
         semestre = request.form['semestre']
-        data = {
-            'carne': carne,
-            'anio': anio,
-            'semestre': semestre
-        }
         if not (carne and semestre and anio):
             flash('No se llenaron todos los campos del formulario, para consultar estudiante')
-            return redirect(url_for('consulta'))
+            return Response({'mensaje':'Faltan Datos para consultar'}, status=500, mimetype='application/json')
         else:
-            r = requests.post(url_backend + 'consulta', data=json.dumps(data))
-            if r.status_code == 201:
-                flash(r.text)
-                return redirect(url_for('consulta'))
-                #return render_template('consulta.html', num=num, presiono=True)
-            else:
-                flash('Hubo un error al consultar')
+            consulta = {"carne": carne, "anio": anio, "semestre": semestre}
+            x = coleccion.find(consulta)
+            return Response({'mensaje': x}, status=201, mimetype='application/json')
 
 
-
-    return render_template('consulta.html')
-'''
 
 @app.route('/insertar', methods=['POST'])
 def insertar():
