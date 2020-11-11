@@ -21,8 +21,8 @@ spec:
          environment: frontend
      spec:
        containers:
-       - image: us.gcr.io/sopes1-281617/test-nginix
+       - image: us.gcr.io/sopes1-281617/frontend-g14
          name: nginx 
          ports:
-           - containerPort: 80
+           - containerPort: 5000
 
