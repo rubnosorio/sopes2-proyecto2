@@ -27,16 +27,15 @@ def index():
 
 @app.route('/consulta', methods=['GET'])
 def consulta():
-    if request.method == 'POST':
-        carne = request.form['carne']
-        anio = request.form['año']
-        semestre = request.form['semestre']
-        if not (carne and semestre and anio):            
-            return Response({'mensaje':'Faltan Datos para consultar'}, status=500, mimetype='application/json')
-        else:
-            consulta = {"carne": carne, "anio": anio, "semestre": semestre}
-            x = coleccion.find(consulta).pretty()
-            return Response({'mensaje': x}, status=201, mimetype='application/json')
+    carne = request.form['carne']
+    anio = request.form['año']
+    semestre = request.form['semestre']
+    if not (carne and semestre and anio):            
+        return Response({'mensaje':'Faltan Datos para consultar'}, status=500, mimetype='application/json')
+    else:
+        consulta = {"carne": carne, "anio": anio, "semestre": semestre}
+        x = coleccion.find(consulta).pretty()
+        return Response({'mensaje': x}, status=201, mimetype='application/json')
 
 
 
