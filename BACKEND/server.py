@@ -34,7 +34,7 @@ def consulta():
         return Response({'mensaje':'Faltan Datos para consultar'}, status=500, mimetype='application/json')
     else:
         consulta = {"carne": carne, "anio": anio, "semestre": semestre}
-        x = coleccion.find(consulta).pretty()
+        x = coleccion.find(consulta)
         return Response({'mensaje': x}, status=201, mimetype='application/json')
 
 
