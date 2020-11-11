@@ -39,7 +39,7 @@ def consulta():
         x = coleccion.find(consulta)
         datos_return = list(x)
         json_data = dumps(datos_return)
-        return Response(json_data), status=201, mimetype='application/json')
+        return Response(json_data, status=201, mimetype='application/json')
 
 
 
