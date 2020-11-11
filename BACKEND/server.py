@@ -3,7 +3,7 @@ from flask import render_template, url_for
 from flask import Response
 import pymongo
 from pymongo import MongoClient
-
+import json
 # Configuraciones
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "MSG"
