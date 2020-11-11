@@ -57,34 +57,27 @@ def insertar():
             x = coleccion.insert_one(data)
             return Response({'mensaje': str(x)}, status=201, mimetype='application/json')
 
-'''
-@app.route('/grupo', methods=['GET', 'POST'])
+
+@app.route('/grupo', methods=['POST'])
 def grupo():
-    if request.method == "POST":
-        grupo = request.form['grupo']
+    grupo = request.form['grupo']
+    if not grupo:
+        return Response({'mensaje':'Faltan Datos para consultar el grupo'}, status=500, mimetype='application/json')
+    else:
+        consulta = {"grupo": grupo}
+        x = coleccion.find(consulta)
+        return Response({'mensaje': str(x)}, status=201, mimetype='application/json')
 
-        if not grupo:
-            flash('No se llenaron todos los campos del formulario, para consultar grupo')
-            return redirect(url_for('grupo'))
-        else:
-            cadena = "SELECT carne, correo FROM student WHERE grupo='{0}'".format(grupo)
-            conn = get_db_connection()
-            datos = conn.execute(cadena).fetchall()
-            conn.commit()
-            conn.close()
-            return render_template('grupo.html', datos=datos)
 
-    return render_template('grupo.html')
-
-@app.route('/delete', methods=['GET', 'POST'])
+'''
+@app.route('/delete', methods=['POST'])
 def delete():
-    if request.method == "POST":
-        cadena = "DELETE FROM student"
-        conn = get_db_connection()
-        conn.execute(cadena)
-        conn.commit()
-        conn.close()
-        return redirect(url_for('index'))
+    cadena = "DELETE FROM student"
+    conn = get_db_connection()
+    conn.execute(cadena)
+    conn.commit()
+    conn.close()
+    return redirect(url_for('index'))
 
     return render_template('delete.html')
 
