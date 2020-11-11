@@ -28,7 +28,7 @@ def index():
 @app.route('/consulta', methods=['POST'])
 def consulta():
     carne = request.form['carne']
-    anio = request.form['año']
+    anio = request.form['anio']
     semestre = request.form['semestre']
     if not (carne and semestre and anio):            
         return Response({'mensaje':'Faltan Datos para consultar'}, status=500, mimetype='application/json')
