@@ -1,13 +1,17 @@
+import os
 from flask import Flask, request, flash, redirect
 from flask import render_template, url_for
 import requests
 import json
 
+#se cargan variables globales
+from dotenv import load_dotenv
+load_dotenv()
 
 # Configuraciones
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "MSG"
-url_backend = "http://localhost:32000/"
+
 
 
 # Rutas del api
@@ -69,7 +73,7 @@ def insertar():
             flash('No se llenaron todos los campos del formulario, para insertar estudiante')
             return redirect(url_for('insertar'))
         else:
-            endpoint_insertar = url_backend + "insertar"
+            endpoint_insertar =os.getenv("ENDPOINT_BACKEND") + "insertar"
             r = requests.post(endpoint_insertar, data=json.dumps(data))
             if r.status_code == 201:
                 flash('Se inserto con exito')

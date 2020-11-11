@@ -5,6 +5,7 @@ ADD . /webApp_RPA
 WORKDIR /webApp_RPA
 RUN pip3 install Flask
 RUN pip3 install requests
+RUN pip3 install -U python-dotenv
 RUN chmod 777 run.sh
 
 CMD sh ./run.sh
