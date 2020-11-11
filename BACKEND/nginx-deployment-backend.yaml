@@ -21,8 +21,8 @@ spec:
          environment: backend
      spec:
        containers:
-       - image: us.gcr.io/sopes1-281617/test-nginix
-         name: nginx 
+       - image: us.gcr.io/sopes1-281617/backend-g14
+         name: back
          ports:
            - containerPort: 80
 
