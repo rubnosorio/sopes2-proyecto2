@@ -25,7 +25,7 @@ def index():
     return render_template('index.html', author="Yoselin", sunny=False, lista=datos)
 
 
-@app.route('/consulta', methods=['GET'])
+@app.route('/consulta', methods=['POST'])
 def consulta():
     carne = request.form['carne']
     anio = request.form['año']

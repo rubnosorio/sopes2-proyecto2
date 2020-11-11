@@ -38,16 +38,13 @@ def consulta():
             return redirect(url_for('consulta'))
         else:
             endpoint_consultar =os.getenv("ENDPOINT_BACKEND") + "consulta"
-            r = requests.get(endpoint_consultar, data=data)
+            r = requests.post(endpoint_consultar, data=data)
             if r.status_code == 201:
                 flash(r.text)
                 return redirect(url_for('consulta'))
                 #return render_template('consulta.html', num=num, presiono=True)
             else:
                 flash('Hubo un error al consultar')
-
-
-
     return render_template('consulta.html')
 
 
