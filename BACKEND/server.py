@@ -70,7 +70,9 @@ def grupo():
     else:
         consulta = {"grupo": grupo}
         x = coleccion.find(consulta)
-        return Response({'mensaje': str(x)}, status=201, mimetype='application/json')
+        datos_return = list(x)
+        json_data = dumps(datos_return)
+        return Response(json_data, status=201, mimetype='application/json')
 
 
 '''
