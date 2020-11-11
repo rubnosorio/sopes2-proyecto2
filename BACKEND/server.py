@@ -52,7 +52,7 @@ def consulta():
     return render_template('consulta.html')
 '''
 
-@app.route('/insertar', methods=['GET', 'POST'])
+@app.route('/insertar', methods=['POST'])
 def insertar():
     if request.method == 'POST':
         nombre = request.form['nombre']
