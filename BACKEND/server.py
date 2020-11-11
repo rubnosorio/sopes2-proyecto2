@@ -4,6 +4,8 @@ from flask import Response
 import pymongo
 from pymongo import MongoClient
 import json
+from bson.json_util import dumps
+
 # Configuraciones
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "MSG"
@@ -35,7 +37,9 @@ def consulta():
     else:
         consulta = {"carne": carne, "anio": anio, "semestre": semestre}
         x = coleccion.find(consulta)
-        return Response(json.loads(x), status=201, mimetype='application/json')
+        datos_return = list(x)
+        json_data = dumps(datos_return)
+        return Response(json_data), status=201, mimetype='application/json')
 
 
 
