@@ -94,7 +94,7 @@ def grupo():
             return redirect(url_for('grupo'))
         else:
             endpoint_grupo =os.getenv("ENDPOINT_BACKEND") + "grupo"
-            r = requests.post(endpoint_insertar, data=data)
+            r = requests.post(endpoint_grupo, data=data)
             if r.status_code == 201:
                 return render_template('grupo.html', datos=json.dumps(r.text))
             else:
