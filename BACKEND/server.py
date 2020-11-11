@@ -12,7 +12,8 @@ app.config['SECRET_KEY'] = "MSG"
 
 # conexión
 con = MongoClient("mongodb+srv://bredly:bredlybd2@clusterdb.0ts2t.mongodb.net/proyecto_sopes?retryWrites=true&w=majority")
-coleccion = con.estudiante
+db = con.proyecto_sopes
+coleccion = db.estudiante
 
 
 # colección

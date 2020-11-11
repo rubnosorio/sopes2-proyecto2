@@ -74,7 +74,7 @@ def insertar():
             return redirect(url_for('insertar'))
         else:
             endpoint_insertar =os.getenv("ENDPOINT_BACKEND") + "insertar"
-            r = requests.post(endpoint_insertar, data=json.dumps(data))
+            r = requests.post(endpoint_insertar, data=data)
             if r.status_code == 201:
                 flash('Se inserto con exito')
             else:
