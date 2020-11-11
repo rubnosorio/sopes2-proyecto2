@@ -37,7 +37,8 @@ def consulta():
             flash('No se llenaron todos los campos del formulario, para consultar estudiante')
             return redirect(url_for('consulta'))
         else:
-            r = requests.post(url_backend + 'consulta', data=json.dumps(data))
+            endpoint_consultar =os.getenv("ENDPOINT_BACKEND") + "consulta"
+            r = requests.get(endpoint_consultar, data=data)
             if r.status_code == 201:
                 flash(r.text)
                 return redirect(url_for('consulta'))
